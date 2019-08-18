@@ -5,11 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerCtrl : MonoBehaviour
 {
-    [Header("TopRight Corner")] public Vector3 topRight = Vector3.right + Vector3.forward;
-    [Header("BottomLeft Corner")] public Vector3 bottomLeft = Vector3.left + Vector3.back;
-    [Header("Speed")] public float speed = 1.0f;
     [Header("Player's Bullet")] public GameObject bullet = null;
     [Header("Fire Spot")] public GameObject fireSpot = null;
+    [Header("Offset from Camera")] public float depth = 0.0f;
 
     private Camera MainCamera { get; set; }
 
@@ -71,7 +69,7 @@ public class PlayerCtrl : MonoBehaviour
             Input.mousePosition.y < Screen.height)
         {
             transform.position = MainCamera.ScreenToWorldPoint(
-                new Vector3(Input.mousePosition.x, Input.mousePosition.y, MainCamera.transform.position.x));
+                new Vector3(Input.mousePosition.x, Input.mousePosition.y, depth));
         }
     }
 }
