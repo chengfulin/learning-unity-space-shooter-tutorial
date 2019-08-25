@@ -150,8 +150,8 @@ MonoBehaviour:
     type: 3}
   enemy: {fileID: 0}
   spawnValues: {x: 3, y: 0, z: 7}
-  hazardCount: 12
-  spawnWait: 0.7
+  hazardCount: 16
+  spawnWait: 0.4
   startWait: 1
   waveWait: 5
   scoreText: {fileID: 1844357969773077907}
