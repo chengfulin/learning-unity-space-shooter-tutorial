@@ -26,7 +26,7 @@ public class GameCtrl : MonoBehaviour
     private int score = 0;
     private int waveIndex = 1;
     private IList<int> instantiationQueue = new List<int>();
-    private float asteroidSpeedUpUnit = -0.2f;
+    private float asteroidSpeedUpUnit = -10.0f;
 
 
     private void Start()
@@ -48,6 +48,9 @@ public class GameCtrl : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
+                ResetHazards(asteroid01);
+                ResetHazards(asteroid02);
+                ResetHazards(asteroid03);
                 SceneManager.LoadScene(0);
             }
         }
@@ -116,12 +119,21 @@ public class GameCtrl : MonoBehaviour
         }
     }
 
+    private void ResetHazards(GameObject hazard)
+    {
+        var hazardMover = hazard.GetComponent<Mover>();
+        if (hazardMover != null)
+        {
+            //hazardMover.ResetSpeed();
+        }
+    }
+
     private void UpgradeHazards(GameObject hazard, int waveIndex)
     {
         var hazardMover = hazard.GetComponent<Mover>();
         if (hazardMover != null)
         {
-            hazardMover.SpeedUp(waveIndex * asteroidSpeedUpUnit);
+            //hazardMover.SpeedUp(waveIndex * asteroidSpeedUpUnit);
         }
     }
 
