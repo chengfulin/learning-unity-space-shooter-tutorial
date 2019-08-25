@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameCtrl : MonoBehaviour
@@ -25,24 +26,36 @@ public class GameCtrl : MonoBehaviour
     private int score = 0;
     private int waveIndex = 1;
     private IList<int> instantiationQueue = new List<int>();
+    private float asteroidSpeedUpUnit = -0.2f;
 
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         initialize();
         UpdateScore();
         StartCoroutine(SpawnWaves());
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (gameOver)
+        {
+            restartText.text = $"{scoreText.text}\nClick to restart";
+            StopAllCoroutines();
+            restart = true;
+        }
+        if (restart)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                SceneManager.LoadScene(0);
+            }
+        }
     }
 
-   public void ToGameOver()
+   public void GameOver()
     {
+        gameOverText.text = "Game Over";
         this.gameOver = true;
     }
 
@@ -72,8 +85,10 @@ public class GameCtrl : MonoBehaviour
 
         while (true)
         {
-            
             Debug.unityLogger.Log($"=== Wave({waveIndex}), hazards={waveHazardCount}");
+            UpgradeHazards(asteroid01, waveIndex -1);
+            UpgradeHazards(asteroid02, waveIndex -1);
+            UpgradeHazards(asteroid03, waveIndex -1);
 
             for (int i = 0; i < instantiationQueue.Count; ++i)
             {
@@ -83,7 +98,7 @@ public class GameCtrl : MonoBehaviour
                         InstantiateAsteroid(asteroid03, new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z));
                         break;
                     case 2:
-                        InstantiateAsteroid(asteroid02, new Vector3(spawnValues.x, spawnValues.y, Random.Range(-spawnValues.z, spawnValues.z)));
+                        InstantiateAsteroid(asteroid02, new Vector3(spawnValues.x, spawnValues.y, Random.Range(0, spawnValues.z)));
                         break;
                     case 1:
                         InstantiateAsteroid(asteroid01, new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z));
@@ -98,13 +113,15 @@ public class GameCtrl : MonoBehaviour
             var append = waveHazardCount >> 2;
             waveHazardCount += append;
             UpdateInstantiationQueue(append);
+        }
+    }
 
-            if (gameOver)
-            {
-                restartText.text = "Click to restart";
-                restart = true;
-                break;
-            }
+    private void UpgradeHazards(GameObject hazard, int waveIndex)
+    {
+        var hazardMover = hazard.GetComponent<Mover>();
+        if (hazardMover != null)
+        {
+            hazardMover.SpeedUp(waveIndex * asteroidSpeedUpUnit);
         }
     }
 
