@@ -1020,10 +1020,57 @@ PrefabInstance:
     - target: {fileID: 1440528741902203310, guid: 6443aa0541062494db7e051bf25b662e,
         type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7846823674624044464, guid: 6443aa0541062494db7e051bf25b662e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6443aa0541062494db7e051bf25b662e, type: 3}
+--- !u!1 &7846823675437101051 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7846823674624044467, guid: 6443aa0541062494db7e051bf25b662e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7846823675437101050}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7846823675437101052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7846823675437101051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dfa29ff8c38a1f47a530ce0770ca6e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Asteroid
+  doStuff:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7846823675437101051}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 99149292}
+        m_MethodName: GameOver
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &8600258267771392170
 GameObject:
   m_ObjectHideFlags: 0
