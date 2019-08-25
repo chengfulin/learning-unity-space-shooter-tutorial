@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-/// <summary>
-/// As exit an collider
-/// </summary>
-public class OnExitCollider : MonoBehaviour
+public class OnEnterCollider : MonoBehaviour
 {
     [SerializeField] [Header("Target Tag Name")] private string targetTag = null;
     [SerializeField] [Header("Callback")] private UnityEvent doStuff = null;
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.tag == targetTag && doStuff != null)
         {

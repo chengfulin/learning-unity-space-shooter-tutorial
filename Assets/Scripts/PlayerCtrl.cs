@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerCtrl : MonoBehaviour
 {
-    [Header("Player's Bullet")] public GameObject bullet = null;
-    [Header("Fire Spot")] public GameObject fireSpot = null;
-    [Header("Offset from Camera")] public float depth = 0.0f;
+    [SerializeField] [Header("Player's Bullet")] private GameObject bullet = null;
+    [SerializeField] [Header("Fire Spot")] private GameObject fireSpot = null;
+    [SerializeField] [Header("Offset from Camera")] private float depth = 0.0f;
 
     private Camera MainCamera { get; set; }
 
@@ -41,7 +41,7 @@ public class PlayerCtrl : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && fireSpot != null)
         {
             // Instantiate a bullet, at the fire spot's position.
-            Instantiate(bullet, fireSpot.transform.position, Quaternion.identity);
+            Instantiate(bullet, fireSpot.transform.position + new Vector3(0, 0, 0.5f), Quaternion.identity);
         }
     }
 
@@ -53,7 +53,7 @@ public class PlayerCtrl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && fireSpot != null)
         {
             // Instantiate a bullet, at the fire spot's position.
-            Instantiate(bullet, fireSpot.transform.position, Quaternion.identity);
+            Instantiate(bullet, fireSpot.transform.position + new Vector3(0, 0, 0.5f), Quaternion.identity);
         }
     }
 

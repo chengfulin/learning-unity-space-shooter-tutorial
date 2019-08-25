@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Boundary
   - PlayerFireSpot
+  - Asteroid
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX

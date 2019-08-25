@@ -7,8 +7,8 @@ using UnityEngine;
 /// </summary>
 public class Rotater : MonoBehaviour
 {
-    [Header("Axis")] public Vector3 axis = Vector3.forward;
-    [Header("Angle in degree")] public float angle = 1.0f;
+    [SerializeField] [Header("Axis")] private Vector3 axis = Vector3.forward;
+    [SerializeField] [Header("Angle in degree")] private float angle = 1.0f;
 
     // Start is called before the first frame update
     void Start()

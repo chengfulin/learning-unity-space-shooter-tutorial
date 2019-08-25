@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class Mover : MonoBehaviour
 {
-    [Header("Constant Speed")] public Vector3 speed = Vector3.forward;
+    [SerializeField] [Header("Constant Speed")] private Vector3 speed = Vector3.forward;
 
     // Start is called before the first frame update
     void Start()
